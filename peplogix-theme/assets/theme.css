@@ -7,10 +7,11 @@
   --color-secondary: {{ settings.color_secondary }};
   --color-accent: {{ settings.color_accent }};
   --color-background: {{ settings.color_background }};
+  --color-background-alt: {{ settings.color_background_alt }};
   --color-text: {{ settings.color_text }};
   --color-text-light: {{ settings.color_text_light }};
   --color-border: {{ settings.color_border }};
-  --font-heading: {{ settings.font_heading }}, sans-serif;
+  --font-heading: {{ settings.font_heading }}, serif;
   --font-body: {{ settings.font_body }}, sans-serif;
   --max-width: 1200px;
   --spacing-xs: 0.5rem;
@@ -18,7 +19,7 @@
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 6rem;
-  --border-radius: 4px;
+  --border-radius: 5px;
   --transition: 0.3s ease;
 }
 
@@ -84,6 +85,10 @@ h4 { font-size: 1.25rem; }
 
 .section {
   padding: var(--spacing-lg) 0;
+}
+
+.section--alt {
+  background-color: var(--color-background-alt);
 }
 
 .grid {
@@ -227,7 +232,8 @@ h4 { font-size: 1.25rem; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  background-color: var(--color-background-alt);
+  color: var(--color-text);
 }
 
 .hero-banner__image {
@@ -241,7 +247,6 @@ h4 { font-size: 1.25rem; }
 .hero-banner__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-banner__content {
@@ -254,13 +259,13 @@ h4 { font-size: 1.25rem; }
 .hero-banner__heading {
   font-size: 3rem;
   margin-bottom: var(--spacing-sm);
-  color: #fff;
+  color: var(--color-secondary);
 }
 
 .hero-banner__subheading {
   font-size: 1.25rem;
   margin-bottom: var(--spacing-md);
-  opacity: 0.9;
+  color: var(--color-text-light);
 }
 
 /* Buttons
@@ -746,7 +751,7 @@ h4 { font-size: 1.25rem; }
 /* Footer
    -------------------------------------------- */
 .site-footer {
-  background: var(--color-text);
+  background: var(--color-secondary);
   color: #fff;
   padding: var(--spacing-lg) 0 var(--spacing-md);
 }

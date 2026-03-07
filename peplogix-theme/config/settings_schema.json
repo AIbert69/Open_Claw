@@ -13,44 +13,50 @@
       {
         "type": "color",
         "id": "color_primary",
-        "label": "Primary color",
-        "default": "#2563eb"
+        "label": "Primary color (teal)",
+        "default": "#4DBFBA"
       },
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Secondary color",
-        "default": "#1e40af"
+        "label": "Secondary color (navy)",
+        "default": "#1E2D3D"
       },
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Accent color",
-        "default": "#dc2626"
+        "label": "Accent color (copper)",
+        "default": "#D05A3A"
       },
       {
         "type": "color",
         "id": "color_background",
         "label": "Background color",
-        "default": "#ffffff"
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_background_alt",
+        "label": "Alternate background (snow)",
+        "default": "#F5F7F8"
       },
       {
         "type": "color",
         "id": "color_text",
-        "label": "Text color",
-        "default": "#1f2937"
+        "label": "Text color (navy)",
+        "default": "#1E2D3D"
       },
       {
         "type": "color",
         "id": "color_text_light",
         "label": "Light text color",
-        "default": "#6b7280"
+        "default": "#5A6B7B"
       },
       {
         "type": "color",
         "id": "color_border",
-        "label": "Border color",
-        "default": "#e5e7eb"
+        "label": "Border color (cloud)",
+        "default": "#E2E7EB"
       }
     ]
   },
@@ -61,13 +67,13 @@
         "type": "text",
         "id": "font_heading",
         "label": "Heading font family",
-        "default": "Inter"
+        "default": "Libre Baskerville"
       },
       {
         "type": "text",
         "id": "font_body",
         "label": "Body font family",
-        "default": "Inter"
+        "default": "Karla"
       }
     ]
   },
