@@ -1,0 +1,83 @@
+<section class="form-section">
+  <h1 class="form-section__title">{{ section.settings.heading }}</h1>
+
+  {% if section.settings.description != blank %}
+    <p class="text-center mb-md" style="color:var(--color-text-light);">{{ section.settings.description }}</p>
+  {% endif %}
+
+  {% form 'contact' %}
+    {% if form.posted_successfully? %}
+      <div style="background:#d1fae5;color:#065f46;padding:1rem;border-radius:var(--border-radius);margin-bottom:1rem;">
+        Thank you for your message. We'll get back to you shortly.
+      </div>
+    {% endif %}
+
+    {% if form.errors %}
+      <div style="background:#fee2e2;color:#991b1b;padding:1rem;border-radius:var(--border-radius);margin-bottom:1rem;">
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="contact-name">Name</label>
+      <input type="text" id="contact-name" name="contact[name]" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contact-email">Email</label>
+      <input type="email" id="contact-email" name="contact[email]" required>
+    </div>
+
+    {% if section.settings.show_phone %}
+      <div class="form-group">
+        <label for="contact-phone">Phone</label>
+        <input type="tel" id="contact-phone" name="contact[phone]">
+      </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="contact[body]" required></textarea>
+    </div>
+
+    <div class="form-submit">
+      <button type="submit" class="btn btn--primary">{{ section.settings.button_text }}</button>
+    </div>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit button text",
+      "default": "Send Message"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}

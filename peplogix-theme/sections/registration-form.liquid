@@ -1,0 +1,99 @@
+<section class="form-section">
+  <h1 class="form-section__title">{{ section.settings.heading }}</h1>
+
+  {% if section.settings.description != blank %}
+    <p class="text-center mb-md" style="color:var(--color-text-light);">{{ section.settings.description }}</p>
+  {% endif %}
+
+  {% form 'create_customer' %}
+    {% if form.errors %}
+      <div style="background:#fee2e2;color:#991b1b;padding:1rem;border-radius:var(--border-radius);margin-bottom:1rem;">
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="reg-first-name">First Name</label>
+      <input type="text" id="reg-first-name" name="customer[first_name]" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-last-name">Last Name</label>
+      <input type="text" id="reg-last-name" name="customer[last_name]" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" name="customer[email]" required>
+    </div>
+
+    <div class="form-group">
+      <label for="reg-password">Password</label>
+      <input type="password" id="reg-password" name="customer[password]" required minlength="8">
+    </div>
+
+    {% if section.settings.show_phone %}
+      <div class="form-group">
+        <label for="reg-phone">Phone (optional)</label>
+        <input type="tel" id="reg-phone" name="customer[phone]">
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_newsletter_opt_in %}
+      <div class="form-group" style="display:flex;align-items:center;gap:0.5rem;">
+        <input type="checkbox" id="reg-newsletter" name="customer[accepts_marketing]" value="true">
+        <label for="reg-newsletter" style="margin-bottom:0;font-weight:400;">Subscribe to our newsletter</label>
+      </div>
+    {% endif %}
+
+    <div class="form-submit">
+      <button type="submit" class="btn btn--primary">{{ section.settings.button_text }}</button>
+    </div>
+
+    <p class="text-center mt-sm" style="font-size:0.875rem;color:var(--color-text-light);">
+      Already have an account? <a href="/account/login">Sign in</a>
+    </p>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "Registration Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Create Account"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone field",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter_opt_in",
+      "label": "Show newsletter opt-in",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit button text",
+      "default": "Create Account"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Registration Form"
+    }
+  ]
+}
+{% endschema %}

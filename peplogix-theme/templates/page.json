@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contact Us",
+        "show_phone": true,
+        "button_text": "Send Message"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-template",
+      "settings": {
+        "columns": "4",
+        "products_per_page": 16
+      }
+    }
+  },
+  "order": ["main"]
+}

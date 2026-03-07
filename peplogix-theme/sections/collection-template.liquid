@@ -1,0 +1,78 @@
+<section class="section">
+  <div class="container">
+    <div class="collection-header">
+      <h1 class="collection-header__title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <p class="collection-header__description">{{ collection.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="collection-toolbar">
+      <span class="collection-toolbar__count">{{ collection.products_count }} products</span>
+      <div class="collection-toolbar__sort">
+        <label for="sort-by" class="visually-hidden">Sort by</label>
+        <select id="sort-by" onchange="window.location.href = this.value;">
+          {% for option in collection.sort_options %}
+            <option value="{{ option.url }}" {% if collection.sort_by == option.value %}selected{% endif %}>
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% endfor %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="pagination">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="pagination__link">&laquo;</a>
+        {% endif %}
+
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="pagination__link">{{ part.title }}</a>
+          {% else %}
+            <span class="pagination__link is-current">{{ part.title }}</span>
+          {% endif %}
+        {% endfor %}
+
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="pagination__link">&raquo;</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Template",
+  "settings": [
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Products per row",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 16
+    }
+  ]
+}
+{% endschema %}

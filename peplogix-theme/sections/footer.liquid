@@ -1,0 +1,102 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      {% for block in section.blocks %}
+        <div class="footer-column" {{ block.shopify_attributes }}>
+          {% if block.type == 'menu' %}
+            <h4 class="footer-column__title">{{ block.settings.title }}</h4>
+            <ul class="footer-column__links">
+              {% for link in block.settings.menu.links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+
+          {% elsif block.type == 'text' %}
+            <h4 class="footer-column__title">{{ block.settings.title }}</h4>
+            <div class="footer-column__text" style="color:rgba(255,255,255,0.7);font-size:0.875rem;">
+              {{ block.settings.text }}
+            </div>
+
+          {% elsif block.type == 'newsletter' %}
+            <h4 class="footer-column__title">{{ block.settings.title }}</h4>
+            <p style="color:rgba(255,255,255,0.7);font-size:0.875rem;margin-bottom:1rem;">{{ block.settings.description }}</p>
+            {% form 'customer', class: 'footer-newsletter' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div style="display:flex;gap:0.5rem;">
+                <input type="email" name="contact[email]" placeholder="Your email" required
+                       style="flex:1;padding:0.5rem;border:1px solid rgba(255,255,255,0.3);background:transparent;color:#fff;border-radius:var(--border-radius);">
+                <button type="submit" class="btn btn--primary" style="padding:0.5rem 1rem;">Subscribe</button>
+              </div>
+            {% endform %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "About Us"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Newsletter"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Subscribe for updates and exclusive offers."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

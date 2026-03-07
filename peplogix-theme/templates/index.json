@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Welcome to PepLogix",
+        "subheading": "Quality products for your everyday needs",
+        "button_text": "Shop Now",
+        "button_link": "/collections/all",
+        "height": 550,
+        "overlay_opacity": 40
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured Products",
+        "product_count": 4,
+        "columns": "4",
+        "show_view_all": true
+      }
+    }
+  },
+  "order": ["hero", "featured"]
+}

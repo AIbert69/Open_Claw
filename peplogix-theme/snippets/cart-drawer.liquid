@@ -1,0 +1,37 @@
+<div class="cart-drawer__overlay" aria-hidden="true"></div>
+
+<aside class="cart-drawer" aria-label="Shopping cart">
+  <div class="cart-drawer__header">
+    <h3>Your Cart ({{ cart.item_count }})</h3>
+    <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+  </div>
+
+  <div class="cart-drawer__items">
+    {% if cart.item_count == 0 %}
+      <p class="text-center mt-md">Your cart is empty</p>
+    {% else %}
+      {% for item in cart.items %}
+        <div class="cart-item">
+          <img class="cart-item__image" src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title | escape }}">
+          <div>
+            <p class="cart-item__title">{{ item.product.title }}</p>
+            {% if item.variant.title != 'Default Title' %}
+              <p style="font-size:0.75rem;color:var(--color-text-light);">{{ item.variant.title }}</p>
+            {% endif %}
+            <p class="cart-item__price">{{ item.final_line_price | money }}</p>
+            <p style="font-size:0.8125rem;">Qty: {{ item.quantity }}</p>
+            <button class="cart-item__remove" data-line="{{ item.key }}">Remove</button>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__total">
+      <span>Total</span>
+      <span class="cart-drawer__total-price">{{ cart.total_price | money }}</span>
+    </div>
+    <a href="/checkout" class="btn btn--primary cart-drawer__checkout">Checkout</a>
+  </div>
+</aside>

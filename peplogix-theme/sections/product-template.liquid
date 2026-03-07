@@ -1,0 +1,79 @@
+<section class="product-template">
+  <div class="container">
+    <div class="product-template__grid">
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <div class="product-gallery__main">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}" id="product-main-image">
+          {% endif %}
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div class="product-gallery__thumbs">
+            {% for image in product.images %}
+              <button class="product-gallery__thumb {% if forloop.first %}is-active{% endif %}" aria-label="View image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 100 }}" data-full-src="{{ image | image_url: width: 800 }}" alt="{{ image.alt | escape }}">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        {% if section.settings.show_vendor and product.vendor %}
+          <p style="color:var(--color-text-light);font-size:0.875rem;margin-bottom:0.5rem;">{{ product.vendor }}</p>
+        {% endif %}
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+
+        <div class="product-info__price">
+          {% if product.compare_at_price > product.price %}
+            <span>{{ product.price | money }}</span>
+            <span style="text-decoration:line-through;color:var(--color-text-light);font-size:1rem;margin-left:0.5rem;">{{ product.compare_at_price | money }}</span>
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
+        </div>
+
+        <div class="product-info__description">
+          {{ product.description }}
+        </div>
+
+        {% form 'product', product, data-add-to-cart: '' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {% for option in product.options_with_values %}
+            {% render 'variant-selector', option: option, product: product %}
+          {% endfor %}
+
+          <div class="quantity-selector">
+            <button type="button" class="quantity-selector__btn" data-qty-minus aria-label="Decrease quantity">−</button>
+            <input type="number" name="quantity" value="1" min="1" class="quantity-selector__input" aria-label="Quantity">
+            <button type="button" class="quantity-selector__btn" data-qty-plus aria-label="Increase quantity">+</button>
+          </div>
+
+          <button type="submit" class="btn btn--primary" style="width:100%;"
+            {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Template",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
