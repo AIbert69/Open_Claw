@@ -141,6 +141,46 @@ svg { display: block; }
   transform: scale(1.12);
 }
 
+/* Physician Portal link (desktop) */
+.navbar__link--portal {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+.navbar__link--portal:hover {
+  color: var(--accent-d) !important;
+  border-bottom-color: var(--accent);
+}
+
+/* Hamburger button — hidden on desktop */
+.navbar__hamburger { display: none; }
+.navbar__hamburger .close-icon { display: none; }
+.navbar__hamburger[aria-expanded="true"] .hamburger-icon { display: none; }
+.navbar__hamburger[aria-expanded="true"] .close-icon { display: block; }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--dark);
+  width: 100%;
+  position: sticky;
+  top: 62px;
+  z-index: 99;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu--open { display: flex; }
+.mobile-menu__link {
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background var(--trans), color var(--trans);
+}
+.mobile-menu__link:hover { background: rgba(255,255,255,0.05); color: var(--white); }
+.mobile-menu__link--portal { color: var(--accent); font-weight: 700; }
+.mobile-menu__link--portal:hover { color: var(--accent); background: rgba(0,201,167,0.08); }
+
 /* =====================================================
    HERO
    ===================================================== */
@@ -855,6 +895,7 @@ svg { display: block; }
 @media (max-width: 768px) {
   .navbar { padding: 0 20px; }
   .navbar__links { display: none; }
+  .navbar__hamburger { display: flex; }
 
   .hero { padding: 40px 20px; flex-direction: column; min-height: auto; }
   .hero__visual { min-height: 280px; }

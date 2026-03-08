@@ -22,11 +22,11 @@
     <ul class="navbar__links">
       <li><a href="#" class="navbar__link navbar__link--active">Home</a></li>
       <li class="navbar__dropdown">
-        <a href="#" class="navbar__link">Shop <span class="navbar__caret">▾</span></a>
+        <a href="#" class="navbar__link">Products <span class="navbar__caret">▾</span></a>
       </li>
-      <li><a href="#" class="navbar__link">Testing</a></li>
-      <li><a href="#" class="navbar__link">FAQ</a></li>
-      <li><a href="#" class="navbar__link">Contact</a></li>
+      <li><a href="#" class="navbar__link">Science</a></li>
+      <li><a href="#" class="navbar__link">About Us</a></li>
+      <li><a href="/portal/dashboard" class="navbar__link navbar__link--portal">Physician Portal</a></li>
     </ul>
 
     <div class="navbar__actions">
@@ -40,8 +40,25 @@
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
         </svg>
       </button>
+      <button class="navbar__icon-btn navbar__hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
+        <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile menu dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="mobile-menu__link" onclick="closeMenu()">Home</a>
+    <a href="#" class="mobile-menu__link" onclick="closeMenu()">Products</a>
+    <a href="#" class="mobile-menu__link" onclick="closeMenu()">Science</a>
+    <a href="#" class="mobile-menu__link" onclick="closeMenu()">About Us</a>
+    <a href="/portal/dashboard" class="mobile-menu__link mobile-menu__link--portal" onclick="closeMenu()">Physician Portal</a>
+  </div>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -388,5 +405,16 @@
     </div>
   </footer>
 
+  <script>
+    function toggleMenu(btn) {
+      const menu = document.getElementById('mobileMenu');
+      const open = menu.classList.toggle('mobile-menu--open');
+      btn.setAttribute('aria-expanded', open);
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('mobile-menu--open');
+      document.querySelector('.navbar__hamburger').setAttribute('aria-expanded', 'false');
+    }
+  </script>
 </body>
 </html>
