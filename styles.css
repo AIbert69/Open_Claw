@@ -91,6 +91,11 @@ svg { display: block; }
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: opacity var(--trans), transform var(--trans);
+}
+.navbar__logo:hover {
+  opacity: 0.85;
+  transform: scale(1.04);
 }
 .navbar__logo-icon { width: 32px; height: 32px; }
 .navbar__logo-text {
@@ -186,8 +191,15 @@ svg { display: block; }
   width: 8px; height: 8px;
   border-radius: 50%;
   background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background var(--trans), transform var(--trans), opacity var(--trans);
+}
+.hero__feature-dot:hover {
+  background: rgba(255,255,255,0.55);
+  transform: scale(1.4);
 }
 .hero__feature-dot--active { background: var(--accent); }
+.hero__feature-dot--active:hover { background: var(--accent); }
 
 .hero__visual {
   flex: 1;
@@ -276,6 +288,12 @@ svg { display: block; }
   border-radius: 8px;
   padding: 10px 14px;
   backdrop-filter: blur(6px);
+  transition: background var(--trans), border-color var(--trans), transform var(--trans);
+}
+.hero__badge:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(0,201,167,0.4);
+  transform: translateY(-3px);
 }
 .hero__badge svg { width: 28px; height: 28px; flex-shrink: 0; }
 .hero__badge div { display: flex; flex-direction: column; }
@@ -303,6 +321,12 @@ svg { display: block; }
   justify-content: center;
   padding-bottom: 16px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: transform var(--trans), box-shadow var(--trans);
+  cursor: pointer;
+}
+.capsule-bottle:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.6);
 }
 .capsule-bottle--1 {
   background: linear-gradient(180deg, #1a3348 0%, #0d2235 100%);
@@ -362,6 +386,14 @@ svg { display: block; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 16px;
+  border-radius: var(--radius);
+  transition: transform var(--trans), box-shadow var(--trans), background var(--trans);
+}
+.about-strip__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  background: var(--white);
 }
 .about-strip__icon {
   width: 36px; height: 36px;
@@ -369,6 +401,11 @@ svg { display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform var(--trans), box-shadow var(--trans);
+}
+.about-strip__item:hover .about-strip__icon {
+  transform: scale(1.18);
+  box-shadow: 0 4px 12px rgba(0,201,167,0.25);
 }
 .about-strip__icon svg { width: 18px; height: 18px; }
 .about-strip__icon--green { background: rgba(0,201,167,0.15); color: var(--accent); }
@@ -530,9 +567,15 @@ svg { display: block; }
   width: 24px; height: 3px;
   background: var(--border);
   border-radius: 2px;
-  transition: background var(--trans);
+  cursor: pointer;
+  transition: background var(--trans), transform var(--trans), width var(--trans);
+}
+.dot:hover {
+  background: var(--muted);
+  transform: scaleY(2);
 }
 .dot--active { background: var(--dark); }
+.dot--active:hover { background: var(--dark); }
 
 @media (hover: none) {
   .product-card:active {
@@ -791,7 +834,15 @@ svg { display: block; }
 }
 .footer__bottom p { font-size: 0.78rem; color: var(--muted); }
 .footer__payments { display: flex; gap: 10px; align-items: center; }
-.footer__pay-icon { width: 46px; height: 28px; border-radius: 4px; }
+.footer__pay-icon {
+  width: 46px; height: 28px;
+  border-radius: 4px;
+  transition: transform var(--trans), opacity var(--trans);
+}
+.footer__pay-icon:hover {
+  transform: scale(1.1) translateY(-2px);
+  opacity: 0.85;
+}
 
 /* =====================================================
    RESPONSIVE — Tablet/Mobile
