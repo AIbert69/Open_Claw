@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>peplogix — Precision Peptides</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="#" class="navbar__logo">
+      <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00c9a7" stroke-width="2" fill="none"/>
+        <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#00c9a7" stroke-width="1.5" fill="rgba(0,201,167,0.12)"/>
+        <circle cx="18" cy="18" r="3" fill="#00c9a7"/>
+      </svg>
+      <span class="navbar__logo-text">peplogix</span>
+    </a>
+
+    <ul class="navbar__links">
+      <li><a href="#" class="navbar__link navbar__link--active">Home</a></li>
+      <li class="navbar__dropdown">
+        <a href="#" class="navbar__link">Shop <span class="navbar__caret">▾</span></a>
+      </li>
+      <li><a href="#" class="navbar__link">Testing</a></li>
+      <li><a href="#" class="navbar__link">FAQ</a></li>
+      <li><a href="#" class="navbar__link">Contact</a></li>
+    </ul>
+
+    <div class="navbar__actions">
+      <button class="navbar__icon-btn" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </button>
+      <button class="navbar__icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__heading">PRECISION PEPTIDES.<br>POWERFUL RESULTS.</h1>
+      <p class="hero__sub">Discover clinically designed formulations engineered to enhance recovery, optimize performance, and unlock your full potential.</p>
+      <a href="#" class="btn btn-primary hero__cta">Explore more <span class="btn__arrow">→</span></a>
+
+      <div class="hero__features">
+        <span class="hero__feature-dot"></span>
+        <span class="hero__feature-dot hero__feature-dot--active"></span>
+        <span class="hero__feature-dot"></span>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero__product-img">
+        <div class="hero__vial">
+          <div class="hero__vial-cap"></div>
+          <div class="hero__vial-body">
+            <div class="hero__vial-logo">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/>
+              </svg>
+              <span>peplogix</span>
+            </div>
+            <p class="hero__vial-name">MOTS-C</p>
+            <p class="hero__vial-dose">5mg</p>
+            <p class="hero__vial-tag">RESEARCH USE ONLY</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00c9a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+        </svg>
+        <div>
+          <strong>Tested in ISO</strong>
+          <span>certified labs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT STRIP ===== -->
+  <section class="about-strip">
+    <p class="section-label">× ABOUT PEPTIDES</p>
+    <div class="about-strip__grid">
+      <div class="about-strip__item">
+        <span class="about-strip__icon about-strip__icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+        </span>
+        <h3>Cellular Activation</h3>
+        <p>Peptides trigger biological processes at a molecular level.</p>
+      </div>
+      <div class="about-strip__item">
+        <span class="about-strip__icon about-strip__icon--teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <h3>Targeted Delivery</h3>
+        <p>Each compound interacts with specific receptors for precision results.</p>
+      </div>
+      <div class="about-strip__item">
+        <span class="about-strip__icon about-strip__icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </span>
+        <h3>Natural Response</h3>
+        <p>Supports your body's innate ability to regenerate and balance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST SECTION ===== -->
+  <section class="trust">
+    <div class="trust__text">
+      <p>Every batch undergoes triple-stage verification — purity, potency, and sterility. We publish our certificates transparently, because trust should be measurable.</p>
+    </div>
+    <div class="trust__img">
+      <div class="trust__img-placeholder"></div>
+    </div>
+  </section>
+
+  <!-- ===== BEST SELLERS ===== -->
+  <section class="best-sellers">
+    <div class="best-sellers__header">
+      <p class="section-label">× BEST SELLERS</p>
+      <h2>Precision formulas in high demand</h2>
+    </div>
+
+    <div class="best-sellers__grid">
+
+      <div class="product-card">
+        <div class="product-card__img">
+          <div class="product-card__vial-wrap">
+            <div class="product-card__vial product-card__vial--dark"></div>
+          </div>
+          <div class="product-card__actions">
+            <button class="product-card__icon-btn" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </button>
+            <button class="product-card__icon-btn" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <h4>GLP-3</h4>
+          <span>$64.00</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__img">
+          <div class="product-card__vial-wrap">
+            <div class="product-card__vial product-card__vial--dark"></div>
+          </div>
+          <div class="product-card__actions">
+            <button class="product-card__icon-btn" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </button>
+            <button class="product-card__icon-btn" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <h4>MOTS-C</h4>
+          <span>$74.00</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__img">
+          <div class="product-card__vial-wrap">
+            <div class="product-card__vial product-card__vial--dark"></div>
+          </div>
+          <div class="product-card__actions">
+            <button class="product-card__icon-btn" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </button>
+            <button class="product-card__icon-btn" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <h4>BPC-157</h4>
+          <span>$88.00</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__img">
+          <div class="product-card__vial-wrap">
+            <div class="product-card__vial product-card__vial--dark"></div>
+          </div>
+          <div class="product-card__actions">
+            <button class="product-card__icon-btn" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </button>
+            <button class="product-card__icon-btn" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-card__info">
+          <h4>BPC-157</h4>
+          <span>$93.00</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="best-sellers__footer">
+      <div class="best-sellers__dots">
+        <span class="dot dot--active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <a href="#" class="btn btn-primary best-sellers__cta">See all <span class="btn__arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="categories">
+
+    <div class="category-row category-row--featured">
+      <div class="category-row__left">
+        <div class="category-row__img category-row__img--peptides"></div>
+      </div>
+      <div class="category-row__body">
+        <h3>Peptides</h3>
+        <p>Clinically formulated compounds that boost repair, recovery, and performance at the cellular level.</p>
+      </div>
+      <a href="#" class="category-row__arrow category-row__arrow--featured" aria-label="Shop Peptides">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <div class="category-row">
+      <div class="category-row__body">
+        <h3>Blends</h3>
+        <p>Multi-peptide formulas designed for synergy — maximising regeneration, strength, and vitality.</p>
+      </div>
+      <a href="#" class="category-row__arrow" aria-label="Shop Blends">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <div class="category-row">
+      <div class="category-row__body">
+        <h3>L-Carnitine</h3>
+        <p>Supports fat metabolism, endurance, and energy production for a lean, efficient body.</p>
+      </div>
+      <a href="#" class="category-row__arrow" aria-label="Shop L-Carnitine">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <div class="category-row">
+      <div class="category-row__body">
+        <h3>Capsules</h3>
+        <p>Clean, precisely dosed formulas for daily support and consistent performance.</p>
+      </div>
+      <a href="#" class="category-row__arrow" aria-label="Shop Capsules">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <div class="category-row">
+      <div class="category-row__body">
+        <h3>Bulk</h3>
+        <p>Large-format research-grade peptides with verified purity and uncompromising quality.</p>
+      </div>
+      <a href="#" class="category-row__arrow" aria-label="Shop Bulk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ===== SECOND HERO (CAPSULE) ===== -->
+  <section class="hero hero--capsule">
+    <div class="hero__content">
+      <h2 class="hero__heading hero__heading--caps">THE FUTURE OF PEPTIDES<br>IN CAPSULE FORM</h2>
+      <p class="hero__sub">The same verified purity — redefined for daily precision. Your favourite peptides, now in a seamless capsule format.</p>
+      <a href="#" class="btn btn-primary hero__cta">Find more <span class="btn__arrow">→</span></a>
+    </div>
+    <div class="hero__visual hero__visual--capsule">
+      <div class="capsule-bottles">
+        <div class="capsule-bottle capsule-bottle--1">
+          <div class="capsule-bottle__label">BPC-157</div>
+        </div>
+        <div class="capsule-bottle capsule-bottle--2">
+          <div class="capsule-bottle__label">GLU-PP-332</div>
+        </div>
+        <div class="capsule-pills"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUBSCRIBE ===== -->
+  <section class="subscribe">
+    <div class="subscribe__img">
+      <div class="subscribe__img-placeholder"></div>
+    </div>
+    <div class="subscribe__content">
+      <h2>Subscribe for 10%<br>discount</h2>
+    </div>
+    <div class="subscribe__form-wrap">
+      <p>Get weekly updates about our products on your email, no spam guaranteed our promise.</p>
+      <form class="subscribe__form" onsubmit="return false;">
+        <input type="email" class="subscribe__input" placeholder="Your email" />
+        <button type="submit" class="subscribe__submit" aria-label="Subscribe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <a href="#" class="navbar__logo footer__logo">
+          <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00c9a7" stroke-width="2" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#00c9a7" stroke-width="1.5" fill="rgba(0,201,167,0.12)"/>
+            <circle cx="18" cy="18" r="3" fill="#00c9a7"/>
+          </svg>
+          <span class="navbar__logo-text footer__logo-text">peplogix</span>
+        </a>
+        <p class="footer__tagline">Unlock your body's potential with science-backed peptides — precision, performance, and vitality in every dose.</p>
+      </div>
+
+      <div class="footer__col">
+        <h5>Menu</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Testing</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Legal</a></li>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Legal &amp; Compliance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>Operational</h5>
+        <p>Every day 9:00 – 22:00<br>Sat – Sun 9:00 – 19:00</p>
+        <a href="#" class="footer__consult">You need a consult?</a>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>Copyright © 2025</p>
+      <div class="footer__payments">
+        <!-- Visa -->
+        <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="30" rx="4" fill="#1a1f71"/>
+          <text x="8" y="21" fill="white" font-size="14" font-family="Arial" font-weight="bold" font-style="italic">VISA</text>
+        </svg>
+        <!-- Mastercard -->
+        <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="30" rx="4" fill="#252525"/>
+          <circle cx="18" cy="15" r="9" fill="#eb001b"/>
+          <circle cx="30" cy="15" r="9" fill="#f79e1b"/>
+          <path d="M24 8.2a9 9 0 010 13.6 9 9 0 010-13.6z" fill="#ff5f00"/>
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
