@@ -1,0 +1,145 @@
+{
+  "site": {
+    "name": "Peplogix",
+    "tagline": "Precision Peptides. Powerful Results.",
+    "copyright": "Copyright 2025"
+  },
+  "navigation": {
+    "links": ["Home", "Shop", "Testing", "FAQ", "Contact"],
+    "icons": ["account", "cart"]
+  },
+  "hero": {
+    "heading": "PRECISION PEPTIDES. POWERFUL RESULTS.",
+    "cta": {
+      "label": "Explore more",
+      "icon": "arrow"
+    },
+    "featured_product": {
+      "name": "MOTS-C",
+      "size": "5mg",
+      "label": "RESEARCH USE ONLY"
+    },
+    "badges": [
+      "Tested in ISO certified labs"
+    ],
+    "slides": [
+      "Slide 1",
+      "Slide 2"
+    ]
+  },
+  "about_peptides": {
+    "section_label": "ABOUT PEPTIDES",
+    "features": [
+      {
+        "icon": "leaf",
+        "title": "Cellular Activation",
+        "description": "Peptides trigger biological processes at a molecular level."
+      },
+      {
+        "icon": "target",
+        "title": "Targeted Delivery",
+        "description": "Each compound interacts with specific receptors for precision results."
+      },
+      {
+        "icon": "leaf",
+        "title": "Natural Response",
+        "description": "Supports your body's innate ability to regenerate and balance."
+      }
+    ]
+  },
+  "trust_section": {
+    "body": "Every batch undergoes triple-stage verification — purity, potency, and sterility. We publish our certificates transparently, because trust should be measurable."
+  },
+  "best_sellers": {
+    "section_label": "BEST SELLERS",
+    "heading": "Precision formulas in high demand",
+    "products": [
+      {
+        "name": "GLP-3",
+        "price": "$84.00",
+        "image": "glp3.jpg"
+      },
+      {
+        "name": "MOTS-C",
+        "price": "$74.00",
+        "image": "motsc.jpg"
+      },
+      {
+        "name": "BPC-157",
+        "price": "$80.00",
+        "image": "bpc157_1.jpg"
+      },
+      {
+        "name": "BPC-157",
+        "price": "$80.00",
+        "image": "bpc157_2.jpg"
+      }
+    ],
+    "cta": {
+      "label": "See all store",
+      "icon": "arrow"
+    }
+  },
+  "categories": [
+    {
+      "name": "Peptides",
+      "description": "Clinically formulated compounds that boost repair, recovery, and performance at the cellular level.",
+      "highlighted": true
+    },
+    {
+      "name": "Blends",
+      "description": "Multi-peptide formulas designed for synergy — maximizing regeneration, strength, and vitality."
+    },
+    {
+      "name": "L-Carnitine",
+      "description": "Supports fat metabolism, endurance, and energy production for a lean, efficient body."
+    },
+    {
+      "name": "Capsules",
+      "description": "Clean, precisely dosed formulas for daily support and consistent performance."
+    },
+    {
+      "name": "Bulk",
+      "description": "Large-format research-grade peptides with verified purity and uncompromising quality."
+    }
+  ],
+  "capsule_banner": {
+    "heading": "THE FUTURE OF PEPTIDES IN CAPSULE FORM",
+    "body": "The same verified purity — redefined for daily precision. Your favourite peptides, now in a seamless capsule format.",
+    "featured_products": ["BPC-157", "GLU-PP-332"],
+    "cta": {
+      "label": "Find out more",
+      "icon": "arrow"
+    }
+  },
+  "newsletter": {
+    "heading": "Subscribe for 10% discount",
+    "subtext": "Get weekly updates about our products on your email, no spam guaranteed we promise.",
+    "placeholder": "Your email",
+    "cta_icon": "arrow"
+  },
+  "footer": {
+    "brand": {
+      "name": "Peplogix",
+      "description": "Unlock your body's potential with science-backed peptides — precision, performance, and vitality in every dose."
+    },
+    "menu": {
+      "heading": "Menu",
+      "links": ["Home", "Shop", "Testing", "FAQ", "Contact"]
+    },
+    "quick_links": {
+      "heading": "Quick Links",
+      "links": ["Legal", "Register", "Privacy Policy", "Terms and Conditions", "Legal & Compliance"]
+    },
+    "operational": {
+      "heading": "Operational",
+      "hours": {
+        "every_day": "9:00 - 22:00",
+        "saturday": "9:00 - 20:00 - 17:00",
+        "sunday": "10:00 - 17:00"
+      },
+      "consult": "You need a consult?"
+    },
+    "social_links": ["visa", "mastercard"]
+  }
+}
