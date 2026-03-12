@@ -45,15 +45,27 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <!-- Ice particle decoration -->
+    <div class="hero__particles" aria-hidden="true">
+      <span class="hero__particle hero__particle--1"></span>
+      <span class="hero__particle hero__particle--2"></span>
+      <span class="hero__particle hero__particle--3"></span>
+      <span class="hero__particle hero__particle--4"></span>
+      <span class="hero__particle hero__particle--5"></span>
+      <span class="hero__particle hero__particle--6"></span>
+      <span class="hero__particle hero__particle--7"></span>
+      <span class="hero__particle hero__particle--8"></span>
+    </div>
+
     <div class="hero__content">
       <h1 class="hero__heading">PRECISION PEPTIDES.<br>POWERFUL RESULTS.</h1>
       <p class="hero__sub">Discover clinically designed formulations engineered to enhance recovery, optimize performance, and unlock your full potential.</p>
       <a href="#" class="btn btn-primary hero__cta">Explore more <span class="btn__arrow">→</span></a>
 
-      <div class="hero__features">
-        <span class="hero__feature-dot"></span>
-        <span class="hero__feature-dot hero__feature-dot--active"></span>
-        <span class="hero__feature-dot"></span>
+      <div class="hero__dots">
+        <span class="hero__dot"></span>
+        <span class="hero__dot hero__dot--active"></span>
+        <span class="hero__dot"></span>
       </div>
     </div>
 
@@ -65,6 +77,8 @@
             <div class="hero__vial-logo">
               <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/>
+                <polygon points="10,4 16,7.5 16,12.5 10,16 4,12.5 4,7.5" stroke="#00c9a7" stroke-width="0.8" fill="rgba(0,201,167,0.1)"/>
+                <circle cx="10" cy="10" r="2" fill="#00c9a7"/>
               </svg>
               <span>peplogix</span>
             </div>
@@ -77,7 +91,8 @@
 
       <div class="hero__badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="#00c9a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+          <rect x="3" y="3" width="18" height="18" rx="3"/>
+          <path d="M9 12l2 2 4-4"/>
         </svg>
         <div>
           <strong>Tested in ISO</strong>
@@ -92,22 +107,31 @@
     <p class="section-label">× ABOUT PEPTIDES</p>
     <div class="about-strip__grid">
       <div class="about-strip__item">
-        <span class="about-strip__icon about-strip__icon--green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+        <span class="about-strip__icon about-strip__icon--teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8 2 4 5 4 9c0 5 8 13 8 13s8-8 8-13c0-4-3.6-7-8-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
         </span>
         <h3>Cellular Activation</h3>
         <p>Peptides trigger biological processes at a molecular level.</p>
       </div>
       <div class="about-strip__item">
         <span class="about-strip__icon about-strip__icon--teal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+          </svg>
         </span>
         <h3>Targeted Delivery</h3>
         <p>Each compound interacts with specific receptors for precision results.</p>
       </div>
       <div class="about-strip__item">
-        <span class="about-strip__icon about-strip__icon--green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span class="about-strip__icon about-strip__icon--teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12M12 12C12 7 7 4 3 6M12 12C12 7 17 4 21 6"/>
+            <path d="M3 6c0 5 3 9 9 10M21 6c0 5-3 9-9 10"/>
+          </svg>
         </span>
         <h3>Natural Response</h3>
         <p>Supports your body's innate ability to regenerate and balance.</p>
@@ -121,7 +145,16 @@
       <p>Every batch undergoes triple-stage verification — purity, potency, and sterility. We publish our certificates transparently, because trust should be measurable.</p>
     </div>
     <div class="trust__img">
-      <div class="trust__img-placeholder"></div>
+      <!-- Lab vials illustration -->
+      <div class="trust__img-placeholder">
+        <div class="trust__vials">
+          <div class="trust__vial trust__vial--1"></div>
+          <div class="trust__vial trust__vial--2"></div>
+          <div class="trust__vial trust__vial--3"></div>
+          <div class="trust__vial trust__vial--4"></div>
+          <div class="trust__vial trust__vial--5"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -137,14 +170,24 @@
       <div class="product-card">
         <div class="product-card__img">
           <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
+            <div class="product-card__vial-illus">
+              <div class="product-card__vial-cap-sm"></div>
+              <div class="product-card__vial-body-sm">
+                <div class="product-card__vial-label">
+                  <svg viewBox="0 0 16 16" fill="none"><polygon points="8,1 15,4.5 15,11.5 8,15 1,11.5 1,4.5" stroke="#00c9a7" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="1.5" fill="#00c9a7"/></svg>
+                  <span>peplogix</span>
+                </div>
+                <p class="pv-name">CJC-1295</p>
+                <p class="pv-dose">5mg</p>
+              </div>
+            </div>
           </div>
           <div class="product-card__actions">
-            <button class="product-card__icon-btn" aria-label="Add to cart">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--cart" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             </button>
-            <button class="product-card__icon-btn" aria-label="Quick view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--view" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
           </div>
         </div>
@@ -157,14 +200,24 @@
       <div class="product-card">
         <div class="product-card__img">
           <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
+            <div class="product-card__vial-illus">
+              <div class="product-card__vial-cap-sm"></div>
+              <div class="product-card__vial-body-sm">
+                <div class="product-card__vial-label">
+                  <svg viewBox="0 0 16 16" fill="none"><polygon points="8,1 15,4.5 15,11.5 8,15 1,11.5 1,4.5" stroke="#00c9a7" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="1.5" fill="#00c9a7"/></svg>
+                  <span>peplogix</span>
+                </div>
+                <p class="pv-name">CJC-1295</p>
+                <p class="pv-dose">5mg</p>
+              </div>
+            </div>
           </div>
           <div class="product-card__actions">
-            <button class="product-card__icon-btn" aria-label="Add to cart">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--cart" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             </button>
-            <button class="product-card__icon-btn" aria-label="Quick view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--view" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
           </div>
         </div>
@@ -177,14 +230,24 @@
       <div class="product-card">
         <div class="product-card__img">
           <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
+            <div class="product-card__vial-illus">
+              <div class="product-card__vial-cap-sm"></div>
+              <div class="product-card__vial-body-sm">
+                <div class="product-card__vial-label">
+                  <svg viewBox="0 0 16 16" fill="none"><polygon points="8,1 15,4.5 15,11.5 8,15 1,11.5 1,4.5" stroke="#00c9a7" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="1.5" fill="#00c9a7"/></svg>
+                  <span>peplogix</span>
+                </div>
+                <p class="pv-name">CJC-1295</p>
+                <p class="pv-dose">5mg</p>
+              </div>
+            </div>
           </div>
           <div class="product-card__actions">
-            <button class="product-card__icon-btn" aria-label="Add to cart">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--cart" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             </button>
-            <button class="product-card__icon-btn" aria-label="Quick view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--view" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
           </div>
         </div>
@@ -197,14 +260,24 @@
       <div class="product-card">
         <div class="product-card__img">
           <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
+            <div class="product-card__vial-illus">
+              <div class="product-card__vial-cap-sm"></div>
+              <div class="product-card__vial-body-sm">
+                <div class="product-card__vial-label">
+                  <svg viewBox="0 0 16 16" fill="none"><polygon points="8,1 15,4.5 15,11.5 8,15 1,11.5 1,4.5" stroke="#00c9a7" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="1.5" fill="#00c9a7"/></svg>
+                  <span>peplogix</span>
+                </div>
+                <p class="pv-name">CJC-1295</p>
+                <p class="pv-dose">5mg</p>
+              </div>
+            </div>
           </div>
           <div class="product-card__actions">
-            <button class="product-card__icon-btn" aria-label="Add to cart">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--cart" aria-label="Add to cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             </button>
-            <button class="product-card__icon-btn" aria-label="Quick view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <button class="product-card__icon-btn product-card__icon-btn--view" aria-label="Quick view">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             </button>
           </div>
         </div>
@@ -218,11 +291,11 @@
 
     <div class="best-sellers__footer">
       <div class="best-sellers__dots">
-        <span class="dot dot--active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <span class="bs-dot bs-dot--active"></span>
+        <span class="bs-dot"></span>
+        <span class="bs-dot"></span>
       </div>
-      <a href="#" class="btn btn-primary best-sellers__cta">See all <span class="btn__arrow">→</span></a>
+      <a href="#" class="btn btn-primary best-sellers__cta">See all store <span class="btn__arrow-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
     </div>
   </section>
 
@@ -272,7 +345,7 @@
       </a>
     </div>
 
-    <div class="category-row">
+    <div class="category-row category-row--last">
       <div class="category-row__body">
         <h3>Bulk</h3>
         <p>Large-format research-grade peptides with verified purity and uncompromising quality.</p>
@@ -284,22 +357,44 @@
 
   </section>
 
-  <!-- ===== SECOND HERO (CAPSULE) ===== -->
+  <!-- ===== CAPSULE HERO ===== -->
   <section class="hero hero--capsule">
+    <div class="hero__particles" aria-hidden="true">
+      <span class="hero__particle hero__particle--1"></span>
+      <span class="hero__particle hero__particle--3"></span>
+      <span class="hero__particle hero__particle--5"></span>
+    </div>
     <div class="hero__content">
       <h2 class="hero__heading hero__heading--caps">THE FUTURE OF PEPTIDES<br>IN CAPSULE FORM</h2>
       <p class="hero__sub">The same verified purity — redefined for daily precision. Your favourite peptides, now in a seamless capsule format.</p>
-      <a href="#" class="btn btn-primary hero__cta">Find more <span class="btn__arrow">→</span></a>
+      <a href="#" class="btn btn-primary hero__cta">Find out more <span class="btn__arrow">→</span></a>
     </div>
     <div class="hero__visual hero__visual--capsule">
       <div class="capsule-bottles">
         <div class="capsule-bottle capsule-bottle--1">
+          <div class="capsule-bottle__logo">
+            <svg viewBox="0 0 20 20" fill="none"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/><circle cx="10" cy="10" r="2" fill="#00c9a7"/></svg>
+            <span>peplogix</span>
+          </div>
           <div class="capsule-bottle__label">BPC-157</div>
         </div>
         <div class="capsule-bottle capsule-bottle--2">
+          <div class="capsule-bottle__logo">
+            <svg viewBox="0 0 20 20" fill="none"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/><circle cx="10" cy="10" r="2" fill="#00c9a7"/></svg>
+            <span>peplogix</span>
+          </div>
           <div class="capsule-bottle__label">GLU-PP-332</div>
         </div>
-        <div class="capsule-pills"></div>
+      </div>
+      <!-- Scattered green capsules/pills on ground -->
+      <div class="capsule-pills-scatter" aria-hidden="true">
+        <span class="cpill cpill--1"></span>
+        <span class="cpill cpill--2"></span>
+        <span class="cpill cpill--3"></span>
+        <span class="cpill cpill--4"></span>
+        <span class="cpill cpill--5"></span>
+        <span class="cpill cpill--6"></span>
+        <span class="cpill cpill--7"></span>
       </div>
     </div>
   </section>
@@ -307,7 +402,13 @@
   <!-- ===== SUBSCRIBE ===== -->
   <section class="subscribe">
     <div class="subscribe__img">
-      <div class="subscribe__img-placeholder"></div>
+      <div class="subscribe__img-placeholder">
+        <div class="subscribe__img-vials">
+          <div class="subscribe__img-vial subscribe__img-vial--1"></div>
+          <div class="subscribe__img-vial subscribe__img-vial--2"></div>
+          <div class="subscribe__img-vial subscribe__img-vial--3"></div>
+        </div>
+      </div>
     </div>
     <div class="subscribe__content">
       <h2>Subscribe for 10%<br>discount</h2>
@@ -363,7 +464,7 @@
 
       <div class="footer__col">
         <h5>Operational</h5>
-        <p>Every day 9:00 – 22:00<br>Sat – Sun 9:00 – 19:00</p>
+        <p>Every day 9:00 – 22:00<br>Sat – Sun 9:00 – 17:00</p>
         <a href="#" class="footer__consult">You need a consult?</a>
       </div>
 
@@ -372,12 +473,10 @@
     <div class="footer__bottom">
       <p>Copyright © 2025</p>
       <div class="footer__payments">
-        <!-- Visa -->
         <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="30" rx="4" fill="#1a1f71"/>
-          <text x="8" y="21" fill="white" font-size="14" font-family="Arial" font-weight="bold" font-style="italic">VISA</text>
+          <text x="7" y="21" fill="white" font-size="14" font-family="Arial" font-weight="bold" font-style="italic">VISA</text>
         </svg>
-        <!-- Mastercard -->
         <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="30" rx="4" fill="#252525"/>
           <circle cx="18" cy="15" r="9" fill="#eb001b"/>
