@@ -1,10 +1,25 @@
 {
   "version": 1,
   "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
+    },
     "remotion-best-practices": {
       "source": "remotion-dev/skills",
       "sourceType": "github",
       "computedHash": "9851afb52e1b892c43b2af973bda1776ce01fedfdfe704e0cfd70069a3a9c300"
+    },
+    "screenshot-to-code": {
+      "source": "onewave-ai/claude-skills",
+      "sourceType": "github",
+      "computedHash": "8a6746ad696de21a98f7f312e2ccb9ab702efb65b45726a9434e028c7acc8253"
+    },
+    "ui-animation": {
+      "source": "mblode/agent-skills",
+      "sourceType": "github",
+      "computedHash": "2246d0232b13fcb9b0aea790e2a7716c6db83c547a9588a2114ef0566adacb35"
     }
   }
 }
