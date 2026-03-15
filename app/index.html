@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' file: data:;">
+  <title>Render Pipeline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1 class="logo">Render Pipeline</h1>
+
+      <!-- Mode tabs -->
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="render">Render</button>
+        <button class="mode-tab" data-mode="vary">Vary</button>
+        <button class="mode-tab" data-mode="closeup">Close-up</button>
+      </div>
+
+      <!-- Image upload -->
+      <div class="section">
+        <label class="section-label">Source Image</label>
+        <button id="btn-select-image" class="btn btn-outline">Select Image...</button>
+        <span id="image-name" class="file-name">No file selected</span>
+      </div>
+
+      <!-- Render mode controls -->
+      <div id="controls-render" class="mode-controls">
+        <div class="section">
+          <label class="section-label" for="description">Building Description</label>
+          <textarea id="description" rows="4" placeholder="Two-story modern house with flat roof, large windows on the ground floor, cantilevered upper volume..."></textarea>
+        </div>
+
+        <div class="section">
+          <label class="section-label" for="materials">Materials</label>
+          <select id="materials"></select>
+        </div>
+
+        <div class="section">
+          <label class="section-label" for="landscape">Landscape</label>
+          <select id="landscape"></select>
+        </div>
+
+        <div class="section">
+          <label class="section-label" for="lighting">Lighting</label>
+          <select id="lighting"></select>
+        </div>
+      </div>
+
+      <!-- Vary mode controls -->
+      <div id="controls-vary" class="mode-controls hidden">
+        <div class="section">
+          <label class="section-label" for="vary-axis">Axis to Change</label>
+          <select id="vary-axis">
+            <option value="materials">Materials</option>
+            <option value="landscape">Landscape</option>
+            <option value="lighting">Lighting</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <label class="section-label" for="vary-preset">Preset or Custom</label>
+          <select id="vary-preset"></select>
+        </div>
+
+        <div class="section">
+          <label class="section-label" for="vary-custom">Custom Description</label>
+          <textarea id="vary-custom" rows="3" placeholder="Or type a custom description..." disabled></textarea>
+        </div>
+      </div>
+
+      <!-- Closeup mode controls: none needed beyond image selection -->
+      <div id="controls-closeup" class="mode-controls hidden">
+        <p class="hint">Select an approved render image above. The close-up prompt is automatic.</p>
+      </div>
+
+      <!-- Shared settings -->
+      <div class="section">
+        <label class="section-label" for="model-select">Model</label>
+        <select id="model-select">
+          <option value="quality">Quality (Pro)</option>
+          <option value="fast">Fast (Flash)</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label class="section-label" for="top-p">Top-P: <span id="top-p-value">0.4</span></label>
+        <input type="range" id="top-p" min="0" max="1" step="0.05" value="0.4">
+      </div>
+
+      <button id="btn-generate" class="btn btn-primary">Generate</button>
+    </aside>
+
+    <!-- Main canvas area -->
+    <main class="canvas">
+      <div id="canvas-empty" class="canvas-placeholder">
+        <p>Select a SketchUp screenshot and click Generate</p>
+      </div>
+      <div id="canvas-loading" class="canvas-placeholder hidden">
+        <div class="spinner"></div>
+        <p>Rendering...</p>
+      </div>
+      <div id="canvas-result" class="canvas-result hidden">
+        <img id="result-image" alt="Rendered result">
+        <div class="result-actions">
+          <span id="result-path" class="file-name"></span>
+          <button id="btn-use-as-source" class="btn btn-small">Use as Source</button>
+        </div>
+      </div>
+      <div id="canvas-error" class="canvas-placeholder hidden">
+        <p class="error-text" id="error-message"></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

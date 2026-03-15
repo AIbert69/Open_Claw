@@ -1,16 +1,19 @@
 {
   "name": "render-pipeline",
   "version": "1.0.0",
-  "description": "CLI tool for photorealistic architectural renders from SketchUp screenshots using Google Gemini",
+  "description": "Desktop app and CLI for photorealistic architectural renders from SketchUp screenshots using Google Gemini",
   "type": "module",
+  "main": "app/main.js",
   "bin": {
     "arch-render": "./bin/arch-render.js"
   },
   "scripts": {
-    "start": "node bin/arch-render.js"
+    "start": "electron .",
+    "cli": "node bin/arch-render.js"
   },
   "dependencies": {
     "@google/genai": "^1.0.0",
-    "commander": "^13.0.0"
+    "commander": "^13.0.0",
+    "electron": "^35.0.0"
   }
 }
