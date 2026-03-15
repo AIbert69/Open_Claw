@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Agent {
+  id          String    @id @default(cuid())
+  name        String
+  role        String
+  description String?
+  avatar      String    @default("")
+  color       String    @default("#6366f1")
+  isOnline    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  messages    Message[]
+  activities  Activity[]
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  title       String
+  completed   Boolean   @default(false)
+  priority    String    @default("medium")
+  agentId     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Goal {
+  id          String    @id @default(cuid())
+  title       String
+  completed   Boolean   @default(false)
+  progress    Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Message {
+  id          String    @id @default(cuid())
+  content     String
+  role        String
+  agentId     String
+  agent       Agent     @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model KnowledgeEntry {
+  id          String    @id @default(cuid())
+  title       String
+  content     String
+  source      String?
+  tags        String    @default("")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Activity {
+  id          String    @id @default(cuid())
+  type        String
+  description String
+  agentId     String?
+  agent       Agent?    @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  createdAt   DateTime  @default(now())
+}
