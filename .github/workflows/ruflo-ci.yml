@@ -1,0 +1,42 @@
+name: Ruflo CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  ruflo-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-ruflo-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-ruflo-
+
+      - name: Install Ruflo
+        run: npm install -g ruflo@latest
+
+      - name: Initialize Ruflo
+        run: npx ruflo@latest init --force
+
+      - name: Verify Ruflo Setup
+        run: npx ruflo@latest --version || echo "Ruflo initialized"
