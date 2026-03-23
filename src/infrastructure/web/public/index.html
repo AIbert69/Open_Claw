@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NicheScout — AI Market Validator</title>
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --surface: #131924;
+      --surface2: #1a2332;
+      --border: #2a3444;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --accent: #6366f1;
+      --accent2: #818cf8;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --orange: #f97316;
+      --red: #ef4444;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    header p { color: var(--text2); font-size: 1.1rem; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--accent2);
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text2);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text2);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--text); background: transparent; }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .loading.active { display: block; }
+
+    .spinner {
+      width: 48px; height: 48px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-agents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .agent-chip {
+      padding: 0.3rem 0.75rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text2);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .agent-chip:nth-child(2) { animation-delay: 0.2s; }
+    .agent-chip:nth-child(3) { animation-delay: 0.4s; }
+    .agent-chip:nth-child(4) { animation-delay: 0.6s; }
+    .agent-chip:nth-child(5) { animation-delay: 0.8s; }
+    .agent-chip:nth-child(6) { animation-delay: 1.0s; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; border-color: var(--accent); }
+    }
+
+    /* Results */
+    #results { display: none; }
+    #results.active { display: block; }
+
+    .score-hero {
+      text-align: center;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #a78bfa, var(--green));
+    }
+
+    .score-number {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .score-label { font-size: 1rem; color: var(--text2); margin-top: 0.25rem; }
+
+    .verdict-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .verdict-Strong { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid var(--green); }
+    .verdict-Promising { background: rgba(234,179,8,0.15); color: var(--yellow); border: 1px solid var(--yellow); }
+    .verdict-Risky { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid var(--orange); }
+    .verdict-Weak { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid var(--red); }
+
+    .executive-summary {
+      padding: 1.25rem;
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    /* Dimension cards */
+    .dimension {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .dimension-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+    }
+
+    .dimension-header h3 { font-size: 1rem; }
+
+    .dimension-score {
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .score-high { color: var(--green); background: rgba(34,197,94,0.1); }
+    .score-mid { color: var(--yellow); background: rgba(234,179,8,0.1); }
+    .score-low { color: var(--orange); background: rgba(249,115,22,0.1); }
+    .score-critical { color: var(--red); background: rgba(239,68,68,0.1); }
+
+    .score-bar {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .dimension-body { display: none; }
+    .dimension.open .dimension-body { display: block; }
+
+    .dim-summary {
+      font-size: 0.9rem;
+      color: var(--text2);
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-list { margin-bottom: 0.75rem; }
+
+    .tag-list h4 {
+      font-size: 0.8rem;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      margin: 0.2rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .tag-strength { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+    .tag-risk { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+    .tag-rec { background: rgba(99,102,241,0.1); color: var(--accent2); border: 1px solid rgba(99,102,241,0.2); }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 2rem 0 1rem;
+      color: var(--accent2);
+    }
+
+    .list-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .list-card li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      list-style: none;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .list-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .list-card li:last-child { border-bottom: none; }
+
+    /* History sidebar */
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background: var(--surface2);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .history-item:hover { border-color: var(--accent); }
+    .history-name { font-weight: 600; font-size: 0.9rem; }
+    .history-score { font-weight: 800; }
+
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.8rem; }
+      .score-number { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>NicheScout</h1>
+      <p>AI-Powered Niche Market Validator — 6 Agents, One Verdict</p>
+    </header>
+
+    <!-- Input Form -->
+    <div id="form-section">
+      <div class="card">
+        <h2>Describe Your Business Idea</h2>
+        <label for="name">Business Name *</label>
+        <input type="text" id="name" placeholder="e.g. PetMatch AI" maxlength="200">
+
+        <label for="description">Description * (what it does, who it's for, what problem it solves)</label>
+        <textarea id="description" placeholder="An AI-powered pet adoption matching platform that uses machine learning to match adopters with pets based on lifestyle, living situation, and personality compatibility. Solves the problem of high return rates in animal shelters by ensuring better matches." maxlength="5000"></textarea>
+
+        <div class="row">
+          <div>
+            <label for="industry">Industry</label>
+            <select id="industry">
+              <option value="">Select industry...</option>
+              <option value="AI / Machine Learning">AI / Machine Learning</option>
+              <option value="SaaS">SaaS</option>
+              <option value="Fintech">Fintech</option>
+              <option value="Healthtech">Healthtech</option>
+              <option value="Edtech">Edtech</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Climate / Sustainability">Climate / Sustainability</option>
+              <option value="Food & Beverage">Food & Beverage</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Creator Economy">Creator Economy</option>
+              <option value="Developer Tools">Developer Tools</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="targetMarket">Target Market</label>
+            <input type="text" id="targetMarket" placeholder="e.g. Small business owners in the US" maxlength="200">
+          </div>
+        </div>
+
+        <label for="budget">Starting Budget</label>
+        <input type="text" id="budget" placeholder="e.g. $5,000 - $20,000" maxlength="100">
+
+        <button class="btn" id="analyzeBtn" onclick="analyzeIdea()">
+          Analyze Viability
+        </button>
+      </div>
+
+      <!-- History -->
+      <div class="card" id="historySection" style="display:none;">
+        <h2>Previous Analyses</h2>
+        <div id="historyList"></div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p style="font-size:1.1rem; font-weight:600;">Analyzing your business idea...</p>
+      <p style="color:var(--text2); margin-top:0.5rem;">6 agents running in parallel</p>
+      <div class="loading-agents">
+        <span class="agent-chip">Market Demand</span>
+        <span class="agent-chip">Competition</span>
+        <span class="agent-chip">Revenue Model</span>
+        <span class="agent-chip">Target Audience</span>
+        <span class="agent-chip">Risk Assessment</span>
+        <span class="agent-chip">Pivot Potential</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results">
+      <button class="btn btn-secondary" onclick="showForm()" style="margin-bottom:1.5rem;">
+        ← Analyze Another Idea
+      </button>
+
+      <div class="score-hero" id="scoreHero">
+        <div class="score-number" id="overallScore">--</div>
+        <div class="score-label">Viability Score</div>
+        <div id="verdictBadge"></div>
+      </div>
+
+      <div class="executive-summary" id="execSummary"></div>
+
+      <h3 class="section-title">Analysis by Dimension</h3>
+      <div id="dimensionCards"></div>
+
+      <h3 class="section-title">Pivot Suggestions</h3>
+      <div class="list-card">
+        <ul id="pivotList"></ul>
+      </div>
+
+      <h3 class="section-title">Recommended Next Steps</h3>
+      <div class="list-card">
+        <ul id="nextStepsList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let analysisHistory = [];
+
+    async function analyzeIdea() {
+      const name = document.getElementById('name').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const industry = document.getElementById('industry').value;
+      const targetMarket = document.getElementById('targetMarket').value.trim();
+      const budget = document.getElementById('budget').value.trim();
+
+      if (!name || !description) {
+        alert('Please fill in the business name and description.');
+        return;
+      }
+      if (description.length < 10) {
+        alert('Please provide a more detailed description (at least 10 characters).');
+        return;
+      }
+
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('loading').classList.add('active');
+      document.getElementById('results').classList.remove('active');
+      document.getElementById('analyzeBtn').disabled = true;
+
+      try {
+        const response = await fetch('/api/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, description, industry, targetMarket, budget }),
+        });
+
+        const data = await response.json();
+
+        if (!data.success) {
+          throw new Error(data.error || 'Analysis failed');
+        }
+
+        analysisHistory.unshift({ name, report: data.data.report });
+        renderResults(data.data.report.report, name);
+        updateHistory();
+
+      } catch (err) {
+        alert('Analysis failed: ' + err.message);
+        showForm();
+      } finally {
+        document.getElementById('loading').classList.remove('active');
+        document.getElementById('analyzeBtn').disabled = false;
+      }
+    }
+
+    function renderResults(report, ideaName) {
+      // Score
+      const scoreEl = document.getElementById('overallScore');
+      scoreEl.textContent = report.overallScore;
+      scoreEl.style.color = getScoreColor(report.overallScore);
+
+      // Verdict
+      const badge = document.getElementById('verdictBadge');
+      badge.innerHTML = `<span class="verdict-badge verdict-${report.verdict}">${report.verdict}</span>`;
+
+      // Executive summary
+      document.getElementById('execSummary').textContent = report.executiveSummary;
+
+      // Dimensions
+      const container = document.getElementById('dimensionCards');
+      container.innerHTML = '';
+      report.dimensions.forEach((dim, i) => {
+        const card = document.createElement('div');
+        card.className = 'dimension' + (i === 0 ? ' open' : '');
+        card.innerHTML = `
+          <div class="dimension-header" onclick="this.parentElement.classList.toggle('open')">
+            <h3>${dim.dimension}</h3>
+            <span class="dimension-score ${getScoreClass(dim.score)}">${dim.score}/100</span>
+          </div>
+          <div class="score-bar">
+            <div class="score-bar-fill" style="width:${dim.score}%;background:${getScoreColor(dim.score)}"></div>
+          </div>
+          <div class="dimension-body">
+            <p class="dim-summary">${dim.summary}</p>
+            ${dim.strengths.length ? `
+              <div class="tag-list">
+                <h4>Strengths</h4>
+                ${dim.strengths.map(s => `<span class="tag tag-strength">${s}</span>`).join('')}
+              </div>
+            ` : ''}
+            ${dim.risks.length ? `
+              <div class="tag-list">
+                <h4>Risks</h4>
+                ${dim.risks.map(r => `<span class="tag tag-risk">${r}</span>`).join('')}
+              </div>
+            ` : ''}
+            ${dim.recommendations.length ? `
+              <div class="tag-list">
+                <h4>Recommendations</h4>
+                ${dim.recommendations.map(r => `<span class="tag tag-rec">${r}</span>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Pivots
+      document.getElementById('pivotList').innerHTML =
+        report.pivotSuggestions.map(p => `<li>${p}</li>`).join('');
+
+      // Next steps
+      document.getElementById('nextStepsList').innerHTML =
+        report.nextSteps.map(s => `<li>${s}</li>`).join('');
+
+      document.getElementById('results').classList.add('active');
+      document.getElementById('results').style.display = 'block';
+    }
+
+    function getScoreColor(score) {
+      if (score >= 75) return 'var(--green)';
+      if (score >= 55) return 'var(--yellow)';
+      if (score >= 35) return 'var(--orange)';
+      return 'var(--red)';
+    }
+
+    function getScoreClass(score) {
+      if (score >= 75) return 'score-high';
+      if (score >= 55) return 'score-mid';
+      if (score >= 35) return 'score-low';
+      return 'score-critical';
+    }
+
+    function showForm() {
+      document.getElementById('form-section').style.display = 'block';
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('results').classList.remove('active');
+    }
+
+    function updateHistory() {
+      if (analysisHistory.length === 0) return;
+      const section = document.getElementById('historySection');
+      section.style.display = 'block';
+      const list = document.getElementById('historyList');
+      list.innerHTML = analysisHistory.slice(0, 10).map((item, i) => `
+        <div class="history-item" onclick='renderResults(${JSON.stringify(item.report.report || item.report)}, "${item.name}")'>
+          <span class="history-name">${item.name}</span>
+          <span class="history-score ${getScoreClass(item.report.report?.overallScore || item.report.overallScore)}">${item.report.report?.overallScore || item.report.overallScore}/100</span>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
