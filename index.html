@@ -388,5 +388,94 @@
     </div>
   </footer>
 
+  <!-- ===== AI CHAT WIDGET ===== -->
+  <div id="chat-widget" class="chat-widget">
+    <button id="chat-toggle" class="chat-widget__toggle" aria-label="Open AI Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+    </button>
+    <div id="chat-panel" class="chat-widget__panel" hidden>
+      <div class="chat-widget__header">
+        <span class="chat-widget__title">peplogix AI Assistant</span>
+        <button id="chat-close" class="chat-widget__close" aria-label="Close chat">&times;</button>
+      </div>
+      <div id="chat-messages" class="chat-widget__messages">
+        <div class="chat-widget__msg chat-widget__msg--bot">Hi! I'm the peplogix assistant powered by Google Gemini. Ask me anything about our peptides!</div>
+      </div>
+      <form id="chat-form" class="chat-widget__form" onsubmit="return false;">
+        <input id="chat-input" class="chat-widget__input" type="text" placeholder="Ask about peptides..." autocomplete="off" />
+        <button type="submit" class="chat-widget__send" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Google Generative AI SDK -->
+  <script type="importmap">
+    { "imports": { "@google/generative-ai": "https://esm.run/@google/generative-ai" } }
+  </script>
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    const API_KEY = "YOUR_GOOGLE_API_KEY"; // Replace with your Gemini API key
+
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const chat = model.startChat({
+      history: [
+        {
+          role: "user",
+          parts: [{ text: "You are a helpful assistant for peplogix, a company that sells research-grade peptides like BPC-157, MOTS-C, and GLP-3. Answer questions about peptides, products, and the company. Keep answers concise." }],
+        },
+        {
+          role: "model",
+          parts: [{ text: "Understood! I'm the peplogix AI assistant, ready to help with questions about our peptides, products, and services." }],
+        },
+      ],
+    });
+
+    const toggle = document.getElementById("chat-toggle");
+    const panel = document.getElementById("chat-panel");
+    const closeBtn = document.getElementById("chat-close");
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("chat-input");
+    const messages = document.getElementById("chat-messages");
+
+    toggle.addEventListener("click", () => {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) input.focus();
+    });
+
+    closeBtn.addEventListener("click", () => {
+      panel.hidden = true;
+    });
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = `chat-widget__msg chat-widget__msg--${sender}`;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    form.addEventListener("submit", async () => {
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = "";
+      addMessage(text, "user");
+
+      try {
+        const result = await chat.sendMessage(text);
+        const response = await result.response;
+        addMessage(response.text(), "bot");
+      } catch (err) {
+        addMessage("Sorry, something went wrong. Please try again.", "bot");
+        console.error("Gemini API error:", err);
+      }
+    });
+  </script>
+
 </body>
 </html>
