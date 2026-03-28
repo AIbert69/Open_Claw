@@ -1,0 +1,20 @@
+{
+  "name": "remotion-video",
+  "version": "1.0.0",
+  "description": "A Remotion video project",
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render src/index.ts MyComposition out/video.mp4",
+    "upgrade": "npx remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.441",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.441"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config": "4.0.441",
+    "typescript": "^5.4.5"
+  }
+}
