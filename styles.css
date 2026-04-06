@@ -177,6 +177,20 @@ svg { display: block; }
   pointer-events: none;
 }
 
+/* Hero entrance animation */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroVialUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroBadgeFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .hero__content {
   flex: 1;
   max-width: 520px;
@@ -189,6 +203,7 @@ svg { display: block; }
   color: var(--white);
   letter-spacing: -0.01em;
   margin-bottom: 18px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
 .hero__heading--caps { font-size: clamp(1.6rem, 3vw, 2.4rem); }
 .hero__sub {
@@ -197,8 +212,15 @@ svg { display: block; }
   line-height: 1.7;
   margin-bottom: 32px;
   max-width: 420px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.12s both;
 }
-.hero__cta { margin-bottom: 40px; }
+.hero__cta {
+  margin-bottom: 40px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) 0.24s both;
+}
+.hero__features {
+  animation: heroFadeUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.34s both;
+}
 
 .hero__features { display: flex; gap: 8px; margin-top: 24px; }
 .hero__feature-dot {
@@ -238,6 +260,7 @@ svg { display: block; }
   align-items: center;
   width: 120px;
   filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
+  animation: heroVialUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.18s both;
 }
 .hero__vial-cap {
   width: 48px; height: 28px;
@@ -294,6 +317,7 @@ svg { display: block; }
   position: absolute;
   bottom: 16px;
   right: 0;
+  animation: heroBadgeFade 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.5s both;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -942,4 +966,15 @@ svg { display: block; }
   .hero__heading { font-size: 1.7rem; }
   .best-sellers__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .footer__top { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
