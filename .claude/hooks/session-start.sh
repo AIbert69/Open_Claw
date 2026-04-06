@@ -7,8 +7,4 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
 fi
 
 # Install dependencies
-# (Add dependency installation commands here as the project grows)
-# Examples:
-#   npm install
-#   pip install -r requirements.txt
-#   cargo build
+npm install
