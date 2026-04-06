@@ -11,18 +11,13 @@
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
     <a href="#" class="navbar__logo">
-      <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00c9a7" stroke-width="2" fill="none"/>
-        <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#00c9a7" stroke-width="1.5" fill="rgba(0,201,167,0.12)"/>
-        <circle cx="18" cy="18" r="3" fill="#00c9a7"/>
-      </svg>
-      <span class="navbar__logo-text">peplogix</span>
+      <img src="assets/peplogix_logo2.png" alt="peplogix" class="navbar__logo-img" />
     </a>
 
     <ul class="navbar__links">
       <li><a href="#" class="navbar__link navbar__link--active">Home</a></li>
       <li class="navbar__dropdown">
-        <a href="#" class="navbar__link">Shop <span class="navbar__caret">▾</span></a>
+        <a href="#" class="navbar__link">Shop <span class="navbar__caret">&#9662;</span></a>
       </li>
       <li><a href="#" class="navbar__link">Testing</a></li>
       <li><a href="#" class="navbar__link">FAQ</a></li>
@@ -45,10 +40,15 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="assets/rawmaterial.jpg">
+      <source src="assets/hero_video.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+
     <div class="hero__content">
       <h1 class="hero__heading">PRECISION PEPTIDES.<br>POWERFUL RESULTS.</h1>
       <p class="hero__sub">Discover clinically designed formulations engineered to enhance recovery, optimize performance, and unlock your full potential.</p>
-      <a href="#" class="btn btn-primary hero__cta">Explore more <span class="btn__arrow">→</span></a>
+      <a href="#" class="btn btn-primary hero__cta">Explore more <span class="btn__arrow">&rarr;</span></a>
 
       <div class="hero__features">
         <span class="hero__feature-dot"></span>
@@ -59,20 +59,7 @@
 
     <div class="hero__visual">
       <div class="hero__product-img">
-        <div class="hero__vial">
-          <div class="hero__vial-cap"></div>
-          <div class="hero__vial-body">
-            <div class="hero__vial-logo">
-              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/>
-              </svg>
-              <span>peplogix</span>
-            </div>
-            <p class="hero__vial-name">MOTS-C</p>
-            <p class="hero__vial-dose">5mg</p>
-            <p class="hero__vial-tag">RESEARCH USE ONLY</p>
-          </div>
-        </div>
+        <img src="assets/Peptide_1.png" alt="Tesamorelin / Ipamorelin peptide vial" class="hero__vial-photo" />
       </div>
 
       <div class="hero__badge">
@@ -89,7 +76,7 @@
 
   <!-- ===== ABOUT STRIP ===== -->
   <section class="about-strip">
-    <p class="section-label">× ABOUT PEPTIDES</p>
+    <p class="section-label">&times; ABOUT PEPTIDES</p>
     <div class="about-strip__grid">
       <div class="about-strip__item">
         <span class="about-strip__icon about-strip__icon--blue">
@@ -118,17 +105,17 @@
   <!-- ===== TRUST SECTION ===== -->
   <section class="trust">
     <div class="trust__text">
-      <p>Every batch undergoes triple-stage verification — purity, potency, and sterility. We publish our certificates transparently, because trust should be measurable.</p>
+      <p>Every batch undergoes triple-stage verification &mdash; purity, potency, and sterility. We publish our certificates transparently, because trust should be measurable.</p>
     </div>
     <div class="trust__img">
-      <div class="trust__img-placeholder"></div>
+      <img src="assets/peptide_assemble.jpg" alt="Peptide assembly line in certified laboratory" class="trust__photo" />
     </div>
   </section>
 
   <!-- ===== BEST SELLERS ===== -->
   <section class="best-sellers">
     <div class="best-sellers__header">
-      <p class="section-label">× BEST SELLERS</p>
+      <p class="section-label">&times; BEST SELLERS</p>
       <h2>Precision formulas in high demand</h2>
     </div>
 
@@ -136,12 +123,7 @@
 
       <div class="product-card">
         <div class="product-card__img">
-          <span class="product-card__badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          </span>
-          <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
-          </div>
+          <img src="assets/Peptide_1.png" alt="Tesamorelin / Ipamorelin" class="product-card__photo" />
           <div class="product-card__actions">
             <button class="product-card__icon-btn" aria-label="Add to cart">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -152,16 +134,14 @@
           </div>
         </div>
         <div class="product-card__info">
-          <h4>GLP-3</h4>
+          <h4>Tesamorelin / Ipamorelin</h4>
           <span>$64.00</span>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-card__img">
-          <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
-          </div>
+          <img src="assets/Peptide_2.png" alt="CJC-1295 / Ipamorelin" class="product-card__photo" />
           <div class="product-card__actions">
             <button class="product-card__icon-btn" aria-label="Add to cart">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -172,16 +152,14 @@
           </div>
         </div>
         <div class="product-card__info">
-          <h4>MOTS-C</h4>
+          <h4>CJC-1295 / Ipamorelin</h4>
           <span>$74.00</span>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-card__img">
-          <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
-          </div>
+          <img src="assets/Peptide_3.png" alt="BPC-157 / TB-500 Wolverine Blend" class="product-card__photo" />
           <div class="product-card__actions">
             <button class="product-card__icon-btn" aria-label="Add to cart">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -192,16 +170,14 @@
           </div>
         </div>
         <div class="product-card__info">
-          <h4>BPC-157</h4>
+          <h4>BPC-157 / TB-500</h4>
           <span>$88.00</span>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-card__img">
-          <div class="product-card__vial-wrap">
-            <div class="product-card__vial product-card__vial--dark"></div>
-          </div>
+          <img src="assets/Peptide_4.png" alt="GHK-Cu Copper Peptide" class="product-card__photo" />
           <div class="product-card__actions">
             <button class="product-card__icon-btn" aria-label="Add to cart">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -212,7 +188,7 @@
           </div>
         </div>
         <div class="product-card__info">
-          <h4>BPC-157</h4>
+          <h4>GHK-Cu Copper Peptide</h4>
           <span>$93.00</span>
         </div>
       </div>
@@ -225,7 +201,7 @@
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
-      <a href="#" class="btn btn-primary best-sellers__cta">See all <span class="btn__arrow">→</span></a>
+      <a href="#" class="btn btn-primary best-sellers__cta">See all <span class="btn__arrow">&rarr;</span></a>
     </div>
   </section>
 
@@ -292,33 +268,17 @@
     <div class="hero__content">
       <h2 class="hero__heading hero__heading--caps">THE FUTURE OF PEPTIDES<br>IN CAPSULE FORM</h2>
       <p class="hero__sub">The same verified purity — redefined for daily precision. Your favourite peptides, now in a seamless capsule format.</p>
-      <a href="#" class="btn btn-primary hero__cta">Find more <span class="btn__arrow">→</span></a>
+      <a href="#" class="btn btn-primary hero__cta">Find more <span class="btn__arrow">&rarr;</span></a>
     </div>
     <div class="hero__visual hero__visual--capsule">
-      <div class="capsule-bottles">
-        <div class="capsule-bottle capsule-bottle--1">
-          <div class="capsule-bottle__logo">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/></svg>
-            <span>peplogix</span>
-          </div>
-          <div class="capsule-bottle__label">BPC-157</div>
-        </div>
-        <div class="capsule-bottle capsule-bottle--2">
-          <div class="capsule-bottle__logo">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="10,1 19,5.5 19,14.5 10,19 1,14.5 1,5.5" stroke="#00c9a7" stroke-width="1.2" fill="none"/></svg>
-            <span>peplogix</span>
-          </div>
-          <div class="capsule-bottle__label">SLU-PP-332</div>
-        </div>
-        <div class="capsule-pills"></div>
-      </div>
+      <img src="assets/pills.jpg" alt="Peplogix BPC-157 and SLU-PP-332 capsule bottles" class="hero__capsule-photo" />
     </div>
   </section>
 
   <!-- ===== SUBSCRIBE ===== -->
   <section class="subscribe">
     <div class="subscribe__img">
-      <div class="subscribe__img-placeholder"></div>
+      <img src="assets/Peptide_2.png" alt="CJC-1295 peptide vial" class="subscribe__vial-photo" />
     </div>
     <div class="subscribe__content">
       <h2>Subscribe for 10%<br>discount</h2>
@@ -340,12 +300,7 @@
 
       <div class="footer__brand">
         <a href="#" class="navbar__logo footer__logo">
-          <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00c9a7" stroke-width="2" fill="none"/>
-            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#00c9a7" stroke-width="1.5" fill="rgba(0,201,167,0.12)"/>
-            <circle cx="18" cy="18" r="3" fill="#00c9a7"/>
-          </svg>
-          <span class="navbar__logo-text footer__logo-text">peplogix</span>
+          <img src="assets/peplogix_logo2.png" alt="peplogix" class="footer__logo-img" />
         </a>
         <p class="footer__tagline">Unlock your body's potential with science-backed peptides — precision, performance, and vitality in every dose.</p>
       </div>
@@ -381,14 +336,12 @@
     </div>
 
     <div class="footer__bottom">
-      <p>Copyright © 2025</p>
+      <p>Copyright &copy; 2025</p>
       <div class="footer__payments">
-        <!-- Visa -->
         <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="30" rx="4" fill="#1a1f71"/>
           <text x="8" y="21" fill="white" font-size="14" font-family="Arial" font-weight="bold" font-style="italic">VISA</text>
         </svg>
-        <!-- Mastercard -->
         <svg class="footer__pay-icon" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="30" rx="4" fill="#252525"/>
           <circle cx="18" cy="15" r="9" fill="#eb001b"/>
