@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installed Skills — Open Claw</title>
+  <style>
+    :root {
+      --bg: #0b1012;
+      --surface: #121a1d;
+      --surface-2: #182327;
+      --border: #1f2e33;
+      --text: #e7f0ef;
+      --muted: #8aa0a4;
+      --accent: #00c9a7;
+      --accent-soft: rgba(0, 201, 167, 0.12);
+      --accent-glow: rgba(0, 201, 167, 0.35);
+      --warn: #ffb454;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Helvetica Neue", sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(0, 201, 167, 0.10), transparent 60%),
+        radial-gradient(900px 500px at -10% 10%, rgba(0, 201, 167, 0.06), transparent 60%),
+        var(--bg);
+    }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 64px 28px 96px; }
+
+    header.page {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 48px;
+    }
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      margin: 14px 0 16px;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+    .stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat b {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .stat span {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 56px;
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    nav.toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      transition: all .18s ease;
+    }
+    nav.toc a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    section.category {
+      margin-bottom: 72px;
+      scroll-margin-top: 24px;
+    }
+    .cat-head {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-head h2 {
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .cat-head .count {
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .cat-head p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0;
+      flex: 1 1 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      position: relative;
+      transition: all .2s ease;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--accent-glow) inset;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card code.name {
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: 0;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 14px;
+    }
+    .triggers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .chip {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* Workflow stages */
+    .stages {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 56px;
+    }
+    .stages h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: -0.01em;
+    }
+    .stages > p {
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 720px;
+    }
+    .stage-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      counter-reset: stage;
+    }
+    .stage {
+      position: relative;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px 18px;
+      counter-increment: stage;
+    }
+    .stage::before {
+      content: counter(stage, decimal-leading-zero);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+    .stage h4 {
+      margin: 6px 0 8px;
+      font-size: 17px;
+    }
+    .stage p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 12px;
+    }
+    .stage ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stage li {
+      font-size: 12.5px;
+      color: var(--text);
+      padding-left: 16px;
+      position: relative;
+    }
+    .stage li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .tip {
+      margin-top: 28px;
+      padding: 16px 18px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-glow);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .tip b { color: var(--accent); }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="page">
+      <div class="kicker">Open Claw · Skills Catalog</div>
+      <h1>All the skills <em>we've installed</em>, and how to chain them.</h1>
+      <p class="lede">
+        Every skill below is Anthropic-official, loaded from
+        <code>.claude/skills/</code>. Claude autoloads a skill the moment a
+        prompt matches its triggers — you don't need to call them by name.
+        Use this page as a menu of what's already wired up, and as a
+        workflow playbook for mixing them together.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>17</b><span>Skills installed</span></div>
+        <div class="stat"><b>7</b><span>Categories</span></div>
+        <div class="stat"><b>5</b><span>Workflow stages</span></div>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="#workflow">Workflow stages</a>
+      <a href="#web">Web design &amp; development</a>
+      <a href="#apps">Apps &amp; backend</a>
+      <a href="#presentations">Presentations</a>
+      <a href="#docs">Documents &amp; writing</a>
+      <a href="#data">Spreadsheets &amp; data</a>
+      <a href="#visual">Visual &amp; creative</a>
+      <a href="#meta">Skill tooling</a>
+    </nav>
+
+    <!-- ================= WORKFLOW ================= -->
+    <section id="workflow" class="stages">
+      <h2>Recommended workflow stages</h2>
+      <p>
+        Most projects move through the same five stages. Mention the right
+        thing and Claude pulls the right skill — no manual switching.
+      </p>
+
+      <div class="stage-list">
+        <div class="stage">
+          <h4>Plan &amp; spec</h4>
+          <p>Lock context before you build. Write it down, ship a decision doc.</p>
+          <ul>
+            <li>doc-coauthoring</li>
+            <li>internal-comms</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <h4>Design &amp; brand</h4>
+          <p>Set the visual direction — colors, typography, theme, look-and-feel.</p>
+          <ul>
+            <li>brand-guidelines</li>
+            <li>theme-factory</li>
+            <li>frontend-design</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <h4>Build</h4>
+          <p>Actually make the thing: site, app, API integration, or MCP server.</p>
+          <ul>
+            <li>frontend-design</li>
+            <li>web-artifacts-builder</li>
+            <li>claude-api</li>
+            <li>mcp-builder</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <h4>Package &amp; deliver</h4>
+          <p>Turn the work into the artifact your audience actually opens.</p>
+          <ul>
+            <li>pptx · docx · pdf · xlsx</li>
+            <li>canvas-design</li>
+            <li>algorithmic-art</li>
+            <li>slack-gif-creator</li>
+          </ul>
+        </div>
+
+        <div class="stage">
+          <h4>Verify &amp; iterate</h4>
+          <p>Test what you built, then codify wins as reusable skills.</p>
+          <ul>
+            <li>webapp-testing</li>
+            <li>skill-creator</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip">
+        <b>Tip:</b> Skills stack. A single prompt like
+        <i>"Build a landing page in our brand colors, export the pitch as a
+        PPTX, and test the form in a headless browser"</i> will load
+        <code>frontend-design</code> + <code>brand-guidelines</code> +
+        <code>pptx</code> + <code>webapp-testing</code> in one go.
+      </div>
+    </section>
+
+    <!-- ================= WEB ================= -->
+    <section id="web" class="category">
+      <div class="cat-head">
+        <h2>Web design &amp; development</h2>
+        <span class="count">5 skills</span>
+        <p>Everything from picking a theme and brand palette to shipping a tested, bundled artifact.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>Frontend Design <code class="name">frontend-design</code></h3>
+          <p>Builds distinctive, production-grade UI — websites, landing pages, dashboards, React components. Opinionated against generic "AI slop" aesthetics.</p>
+          <div class="triggers">
+            <span class="chip">landing page</span>
+            <span class="chip">React</span>
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">dashboard</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Web Artifacts Builder <code class="name">web-artifacts-builder</code></h3>
+          <p>Scaffolds complex multi-component claude.ai artifacts with React + Tailwind + shadcn/ui, then bundles everything into a single HTML file.</p>
+          <div class="triggers">
+            <span class="chip">React 18</span>
+            <span class="chip">Tailwind</span>
+            <span class="chip">shadcn/ui</span>
+            <span class="chip">bundled</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Theme Factory <code class="name">theme-factory</code></h3>
+          <p>10 pre-set professional themes (color palette + font pairings) you can apply to any artifact — slides, docs, pages — or generate a new one on-the-fly.</p>
+          <div class="triggers">
+            <span class="chip">styling</span>
+            <span class="chip">palette</span>
+            <span class="chip">typography</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Brand Guidelines <code class="name">brand-guidelines</code></h3>
+          <p>Applies Anthropic's official brand colors and typography. Swap for your own brand when you want a consistent look across every deliverable.</p>
+          <div class="triggers">
+            <span class="chip">brand</span>
+            <span class="chip">colors</span>
+            <span class="chip">identity</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Webapp Testing <code class="name">webapp-testing</code></h3>
+          <p>Playwright-based toolkit for driving local web apps: verify flows, debug UI, capture screenshots, read browser logs.</p>
+          <div class="triggers">
+            <span class="chip">Playwright</span>
+            <span class="chip">E2E</span>
+            <span class="chip">screenshots</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= APPS ================= -->
+    <section id="apps" class="category">
+      <div class="cat-head">
+        <h2>Apps &amp; backend</h2>
+        <span class="count">2 skills</span>
+        <p>Build Claude-powered apps or expose external services to any LLM through MCP.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>Claude API <code class="name">claude-api</code></h3>
+          <p>Build, debug, and optimize apps on the Anthropic SDK. Covers prompt caching, thinking, tool use, batch, files, citations, memory, and model migrations (4.5 → 4.6 → 4.7).</p>
+          <div class="triggers">
+            <span class="chip">SDK</span>
+            <span class="chip">prompt caching</span>
+            <span class="chip">tool use</span>
+            <span class="chip">model migration</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>MCP Builder <code class="name">mcp-builder</code></h3>
+          <p>Creates high-quality MCP servers so any LLM can call your external services through clean, well-typed tools. FastMCP (Python) or MCP SDK (Node/TS).</p>
+          <div class="triggers">
+            <span class="chip">MCP</span>
+            <span class="chip">FastMCP</span>
+            <span class="chip">integrations</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= PRESENTATIONS ================= -->
+    <section id="presentations" class="category">
+      <div class="cat-head">
+        <h2>Presentations</h2>
+        <span class="count">1 skill (+ theme-factory)</span>
+        <p>Create, read, and edit .pptx decks — with themes applied consistently.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>PPTX <code class="name">pptx</code></h3>
+          <p>Any time a .pptx is input or output: create pitch decks, parse existing decks, edit templates, handle speaker notes, split/combine files.</p>
+          <div class="triggers">
+            <span class="chip">slide deck</span>
+            <span class="chip">pitch deck</span>
+            <span class="chip">pptxgenjs</span>
+            <span class="chip">templates</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Theme Factory <code class="name">theme-factory</code></h3>
+          <p>Pairs cleanly with <code>pptx</code> — applies a cohesive color/font theme across every slide, or generates a brand-new theme for the deck.</p>
+          <div class="triggers">
+            <span class="chip">slide styling</span>
+            <span class="chip">consistent look</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= DOCS ================= -->
+    <section id="docs" class="category">
+      <div class="cat-head">
+        <h2>Documents &amp; writing</h2>
+        <span class="count">4 skills</span>
+        <p>From co-authoring a spec to shipping a polished Word doc, PDF, or internal memo.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>DOCX <code class="name">docx</code></h3>
+          <p>Create, read, edit, manipulate Word documents. Tables of contents, headings, page numbers, letterheads, tracked changes, images, find-and-replace.</p>
+          <div class="triggers">
+            <span class="chip">Word</span>
+            <span class="chip">report</span>
+            <span class="chip">memo</span>
+            <span class="chip">letter</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>PDF <code class="name">pdf</code></h3>
+          <p>Read, extract, merge, split, rotate, watermark, encrypt, fill forms, OCR scans. Any task that touches a .pdf file.</p>
+          <div class="triggers">
+            <span class="chip">extract</span>
+            <span class="chip">merge</span>
+            <span class="chip">forms</span>
+            <span class="chip">OCR</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Doc Co-Authoring <code class="name">doc-coauthoring</code></h3>
+          <p>Three-stage workflow (context → refine → reader-test) for PRDs, proposals, design docs, RFCs, decision docs.</p>
+          <div class="triggers">
+            <span class="chip">PRD</span>
+            <span class="chip">design doc</span>
+            <span class="chip">RFC</span>
+            <span class="chip">proposal</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Internal Comms <code class="name">internal-comms</code></h3>
+          <p>Company-flavored formats: 3P updates (Progress, Plans, Problems), status reports, leadership updates, newsletters, FAQs, incident reports.</p>
+          <div class="triggers">
+            <span class="chip">status report</span>
+            <span class="chip">leadership update</span>
+            <span class="chip">incident report</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= DATA ================= -->
+    <section id="data" class="category">
+      <div class="cat-head">
+        <h2>Spreadsheets &amp; data</h2>
+        <span class="count">1 skill</span>
+        <p>Work with any tabular file where the deliverable is a spreadsheet.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>XLSX <code class="name">xlsx</code></h3>
+          <p>Open, read, edit, or create .xlsx / .xlsm / .csv / .tsv — add columns, compute formulas, format, chart, clean messy data. Zero formula errors required.</p>
+          <div class="triggers">
+            <span class="chip">Excel</span>
+            <span class="chip">formulas</span>
+            <span class="chip">charts</span>
+            <span class="chip">data cleaning</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= VISUAL ================= -->
+    <section id="visual" class="category">
+      <div class="cat-head">
+        <h2>Visual &amp; creative</h2>
+        <span class="count">3 skills</span>
+        <p>Posters, generative art, and Slack-ready animated GIFs — all original, no copying existing artists.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>Canvas Design <code class="name">canvas-design</code></h3>
+          <p>Static visual art — posters, designs, covers — as .png or .pdf. Builds a design philosophy first, then expresses it visually.</p>
+          <div class="triggers">
+            <span class="chip">poster</span>
+            <span class="chip">PNG</span>
+            <span class="chip">PDF art</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Algorithmic Art <code class="name">algorithmic-art</code></h3>
+          <p>Generative p5.js art with seeded randomness, flow fields, particle systems, and an interactive viewer for exploring parameters.</p>
+          <div class="triggers">
+            <span class="chip">p5.js</span>
+            <span class="chip">generative</span>
+            <span class="chip">flow field</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Slack GIF Creator <code class="name">slack-gif-creator</code></h3>
+          <p>Animated GIFs tuned to Slack's size, FPS, and color constraints — emoji (128×128) or message (480×480).</p>
+          <div class="triggers">
+            <span class="chip">GIF</span>
+            <span class="chip">Slack</span>
+            <span class="chip">animation</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= META ================= -->
+    <section id="meta" class="category">
+      <div class="cat-head">
+        <h2>Skill tooling</h2>
+        <span class="count">1 skill</span>
+        <p>Close the loop: turn what we've learned into new skills we can reuse forever.</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <h3>Skill Creator <code class="name">skill-creator</code></h3>
+          <p>Author new skills, refactor existing ones, run evals, benchmark performance with variance analysis, and tune descriptions for better auto-triggering.</p>
+          <div class="triggers">
+            <span class="chip">author</span>
+            <span class="chip">evaluate</span>
+            <span class="chip">benchmark</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <div>Installed from <a href="https://github.com/anthropics/skills">github.com/anthropics/skills</a> · loaded from <code>.claude/skills/</code></div>
+      <div>Open Claw · skills overview</div>
+    </footer>
+
+  </div>
+</body>
+</html>
